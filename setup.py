@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="slaven92-QTvisualiser",
-    version="0.1.0",
+    version="0.1.3",
     description="Visualise cross section of a 3D image",
     long_description=README,
     long_description_content_type="text/markdown",
