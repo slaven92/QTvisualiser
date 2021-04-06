@@ -1,16 +1,23 @@
 import numpy as np
 
 class ImgData:
-    def __init__(self):
-        self.x = np.linspace(1,10,10)
-        self.y = np.linspace(50,70,50)
-        self.z = np.linspace(80,150,25)
+    # def __init__(self):
+    #     pass
+
+    def loadData(self,filename):
+        #TODO to ba implemented
+        self.loadFakeData()
+
+    def loadFakeData(self):
+        self.x = np.linspace(1,10,100)
+        self.y = np.linspace(50,70,500)
+        self.z = np.linspace(80,150,250)
         
         # raw data from GG
         self.img = np.random.rand(len(self.x), len(self.y), len(self.z))
+        self.img[0,0,0] = np.nan
 
-
-
+    
     #xy slice
     def get_slice_parallel(self):
         scale = self.x[1]-self.x[0], self.y[1]-self.y[0]
