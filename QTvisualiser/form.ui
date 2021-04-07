@@ -70,8 +70,20 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuUtils">
+    <property name="title">
+     <string>Utils</string>
+    </property>
+    <addaction name="actionLoad_Test_Data"/>
+   </widget>
+   <addaction name="menuUtils"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionLoad_Test_Data">
+   <property name="text">
+    <string>Load Test Data</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>

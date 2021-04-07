@@ -19,6 +19,7 @@ class MainController():
         self.widget.graphicsView.timeLine.sigPositionChanged.connect(self.updateTextWithSliders)
         self.widget.graphicsView_2.timeLine.sigPositionChanged.connect(self.updateTextWithSliders)
         self.widget.graphicsView_3.timeLine.sigPositionChanged.connect(self.updateTextWithSliders)
+        self.widget.actionLoad_Test_Data.triggered.connect(self.loadFakeData)
 
 
     #slots
@@ -29,7 +30,13 @@ class MainController():
         self.widget.lineEdit_4.setText(filename[0])
         self.plotData()
 
-        #TODO update what is slider value
+        #update what is slider value
+        self.updateTextWithSliders()
+
+
+    def loadFakeData(self):
+        self.data.loadFakeData()
+        self.plotData()
         self.updateTextWithSliders()
 
 
