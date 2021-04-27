@@ -24,3 +24,5 @@ class mainWindow(QMainWindow):
 class myImageView(ImageView):
     def __init__(self, *args, **kwargs):
         super().__init__(view=PlotItem(), *args, **kwargs)
+        self.setPredefinedGradient('flame')
+        self.getView().invertY(False)

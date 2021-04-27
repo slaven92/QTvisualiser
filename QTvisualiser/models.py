@@ -1,12 +1,41 @@
 import numpy as np
+import pandas as pd
 
 class ImgData:
     # def __init__(self):
     #     pass
 
     def loadData(self,filename):
-        #TODO to ba implemented
-        self.loadFakeData()
+        self.raw_data = np.loadtxt(filename)
+
+        self.x = sorted(set(self.raw_data[:,0]))
+        self.y = sorted(set(self.raw_data[:,1]))
+        self.z = sorted(set(self.raw_data[:,2]))
+
+        x_mapping = { elem:i for i, elem in enumerate(self.x)}
+        y_mapping = { elem:i for i, elem in enumerate(self.y)}
+        z_mapping = { elem:i for i, elem in enumerate(self.z)}
+
+        self.number_of_params = self.raw_data.shape[1]-3
+        self.all_params = []
+        for i in range(self.number_of_params):
+            tmp = np.empty( (len(self.x), len(self.y), len(self.z)) )
+            self.all_params.append(tmp)
+
+        for row in self.raw_data:
+            x_ind = x_mapping[row[0]]
+            y_ind = y_mapping[row[1]]
+            z_ind = z_mapping[row[2]]
+
+            for i in range(self.number_of_params):
+                param_index = i + 3
+                self.all_params[i][x_ind,y_ind,z_ind] = row[param_index]
+
+
+        self.img = self.all_params[0]
+
+    def change_param_number(self, param_number):
+        self.img = self.all_params[param_number]
 
     def loadFakeData(self):
         self.x = np.linspace(1,10,100)

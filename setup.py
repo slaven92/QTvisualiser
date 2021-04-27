@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="slaven92-QTvisualiser",
-    version="0.1.4",
+    version="0.2.1",
     description="Visualise cross section of a 3D image",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -25,7 +25,7 @@ setup(
     ],
     packages=["QTvisualiser"],
     include_package_data=True,
-    install_requires=["PyQt5==5.15.4", "pyqtgraph==0.12.0"],
+    install_requires=["PyQt5", "pyqtgraph"],
     entry_points={
         "console_scripts": [
             "visualise=QTvisualiser.__main__:main",
