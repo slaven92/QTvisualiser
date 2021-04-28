@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>804</width>
-    <height>552</height>
+    <width>1185</width>
+    <height>877</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,23 +17,6 @@
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_3">
-      <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Parameter</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSpinBox" name="spinBox">
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>1</number>
-        </property>
-       </widget>
-      </item>
       <item>
        <widget class="QLineEdit" name="lineEdit_4">
         <property name="text">
@@ -51,27 +34,29 @@
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="2" column="0">
        <widget class="myImageView" name="graphicsView_3"/>
       </item>
-      <item>
-       <widget class="myImageView" name="graphicsView_2"/>
+      <item row="2" column="1">
+       <widget class="myImageView" name="graphicsView_4"/>
       </item>
-      <item>
+      <item row="0" column="0">
        <widget class="myImageView" name="graphicsView"/>
       </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
+      <item row="0" column="1">
+       <widget class="myImageView" name="graphicsView_2"/>
+      </item>
+      <item row="1" column="1">
        <widget class="QLineEdit" name="lineEdit_2"/>
       </item>
-      <item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="lineEdit_5"/>
+      </item>
+      <item row="3" column="0">
        <widget class="QLineEdit" name="lineEdit_3"/>
       </item>
-      <item>
+      <item row="1" column="0">
        <widget class="QLineEdit" name="lineEdit"/>
       </item>
      </layout>
@@ -83,7 +68,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>804</width>
+     <width>1185</width>
      <height>21</height>
     </rect>
    </property>
@@ -91,7 +76,6 @@
     <property name="title">
      <string>Utils</string>
     </property>
-    <addaction name="actionLoad_Test_Data"/>
    </widget>
    <addaction name="menuUtils"/>
   </widget>

@@ -77,3 +77,64 @@ class MainController():
         self.widget.lineEdit.setText(f"z={self.data.z[z_ind]}")
         self.widget.lineEdit_3.setText(f"y={self.data.y[y_ind]}")
         self.widget.lineEdit_2.setText(f"x={self.data.x[x_ind]}")
+
+
+class MainController2():
+    def __init__(self, widget):
+        self.widget = widget
+        self._create_connections()
+        self.data = ImgData()
+
+    
+    def _create_connections(self):
+        #buttons
+        self.widget.pushButton.clicked.connect(self.loadData)
+
+        #connect slider in windows to update
+        self.widget.graphicsView.sigTimeChanged.connect(self.updateTextWithSliders)
+        self.widget.graphicsView_2.sigTimeChanged.connect(self.updateTextWithSliders)
+        self.widget.graphicsView_3.sigTimeChanged.connect(self.updateTextWithSliders)
+        self.widget.graphicsView_4.sigTimeChanged.connect(self.updateTextWithSliders)
+
+
+    #slots
+    def loadData(self):
+        filename = QFileDialog.getOpenFileName()
+        self.data.loadData(filename[0])
+        #rename the choose file dialog
+        self.widget.lineEdit_4.setText(filename[0])
+        self.plotData()
+
+        #update what is slider value
+        self.updateTextWithSliders(0)
+
+
+    def plotData(self):
+        self.data.change_param_number(0)
+        posSlice, scaleSlice, imgSlice = self.data.get_slice_parallel()
+        self.widget.graphicsView.setImage(imgSlice, pos=posSlice, scale=scaleSlice, autoRange=True, autoHistogramRange=True)
+
+        self.data.change_param_number(1)
+        posSlice, scaleSlice, imgSlice = self.data.get_slice_parallel()
+        self.widget.graphicsView_2.setImage(imgSlice, pos=posSlice, scale=scaleSlice, autoRange=True, autoHistogramRange=True)
+
+        self.data.change_param_number(2)
+        posSlice, scaleSlice, imgSlice = self.data.get_slice_parallel()
+        self.widget.graphicsView_3.setImage(imgSlice, pos=posSlice, scale=scaleSlice, autoRange=True, autoHistogramRange=True)
+
+        self.data.change_param_number(3)
+        posSlice, scaleSlice, imgSlice = self.data.get_slice_parallel()
+        self.widget.graphicsView_4.setImage(imgSlice, pos=posSlice, scale=scaleSlice, autoRange=True, autoHistogramRange=True)
+
+
+
+    def updateTextWithSliders(self, ind):
+        self.widget.graphicsView.setCurrentIndex(ind)
+        self.widget.graphicsView_2.setCurrentIndex(ind)
+        self.widget.graphicsView_3.setCurrentIndex(ind)
+        self.widget.graphicsView_4.setCurrentIndex(ind)
+
+        self.widget.lineEdit.setText(f"z={self.data.z[ind]}")
+        self.widget.lineEdit_3.setText(f"z={self.data.z[ind]}")
+        self.widget.lineEdit_2.setText(f"z={self.data.z[ind]}")
+        self.widget.lineEdit_5.setText(f"z={self.data.z[ind]}")
