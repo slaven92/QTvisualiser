@@ -3,6 +3,7 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow
 from pyqtgraph.graphicsItems.PlotItem import PlotItem
 from pyqtgraph.imageview import ImageView
+from pyqtgraph import ColorMap
 
 
 class mainWindow(QMainWindow):
@@ -44,5 +45,6 @@ class mainWindow2(QMainWindow):
 class myImageView(ImageView):
     def __init__(self, *args, **kwargs):
         super().__init__(view=PlotItem(), *args, **kwargs)
-        self.setPredefinedGradient('flame')
-        # self.getView().invertY(False)
+        map = ColorMap(pos=[0, 0.5, 1], color=[(0,0,255), (255,255,255), (255,0,0)])
+        self.setColorMap(map)
+        # self.setPredefinedGradient('flame')
