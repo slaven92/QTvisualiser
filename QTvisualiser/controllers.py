@@ -95,6 +95,10 @@ class MainController2():
         self.widget.graphicsView_2.sigTimeChanged.connect(self.updateTextWithSliders)
         self.widget.graphicsView_3.sigTimeChanged.connect(self.updateTextWithSliders)
         self.widget.graphicsView_4.sigTimeChanged.connect(self.updateTextWithSliders)
+        self.widget.graphicsView_5.sigTimeChanged.connect(self.updateTextWithSliders2)
+        self.widget.graphicsView_6.sigTimeChanged.connect(self.updateTextWithSliders2)
+        self.widget.graphicsView_7.sigTimeChanged.connect(self.updateTextWithSliders2)
+        self.widget.graphicsView_8.sigTimeChanged.connect(self.updateTextWithSliders2)
 
 
     #slots
@@ -107,6 +111,7 @@ class MainController2():
 
         #update what is slider value
         self.updateTextWithSliders(0)
+        self.updateTextWithSliders2(0)
 
 
     def plotData(self):
@@ -127,6 +132,23 @@ class MainController2():
         self.widget.graphicsView_4.setImage(imgSlice, pos=posSlice, scale=scaleSlice, autoRange=True, autoHistogramRange=True)
 
 
+        self.data.change_param_number(0)
+        posSlice, scaleSlice, imgSlice = self.data.get_slice_perp()
+        self.widget.graphicsView_5.setImage(imgSlice, pos=posSlice, scale=scaleSlice, autoRange=True, autoHistogramRange=True)
+
+        self.data.change_param_number(1)
+        posSlice, scaleSlice, imgSlice = self.data.get_slice_perp()
+        self.widget.graphicsView_6.setImage(imgSlice, pos=posSlice, scale=scaleSlice, autoRange=True, autoHistogramRange=True)
+
+        self.data.change_param_number(2)
+        posSlice, scaleSlice, imgSlice = self.data.get_slice_perp()
+        self.widget.graphicsView_7.setImage(imgSlice, pos=posSlice, scale=scaleSlice, autoRange=True, autoHistogramRange=True)
+
+        self.data.change_param_number(3)
+        posSlice, scaleSlice, imgSlice = self.data.get_slice_perp()
+        self.widget.graphicsView_8.setImage(imgSlice, pos=posSlice, scale=scaleSlice, autoRange=True, autoHistogramRange=True)
+
+
 
     def updateTextWithSliders(self, ind):
         self.widget.graphicsView.setCurrentIndex(ind)
@@ -138,3 +160,16 @@ class MainController2():
         self.widget.lineEdit_3.setText(f"z={self.data.z[ind]}")
         self.widget.lineEdit_2.setText(f"z={self.data.z[ind]}")
         self.widget.lineEdit_5.setText(f"z={self.data.z[ind]}")
+
+    def updateTextWithSliders2(self, ind):
+        self.widget.graphicsView_5.setCurrentIndex(ind)
+        self.widget.graphicsView_6.setCurrentIndex(ind)
+        self.widget.graphicsView_7.setCurrentIndex(ind)
+        self.widget.graphicsView_8.setCurrentIndex(ind)
+
+        self.widget.lineEdit_6.setText(f"y={self.data.z[ind]}")
+        self.widget.lineEdit_7.setText(f"y={self.data.z[ind]}")
+        self.widget.lineEdit_8.setText(f"y={self.data.z[ind]}")
+        self.widget.lineEdit_9.setText(f"y={self.data.z[ind]}")
+
+

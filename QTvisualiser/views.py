@@ -33,6 +33,10 @@ class mainWindow2(QMainWindow):
 
     def mainWindow_setup(self):
          self.setWindowTitle("ploting the crosssections")
+         self.graphicsView_5.getView().invertY(False)
+         self.graphicsView_6.getView().invertY(False)
+         self.graphicsView_7.getView().invertY(False)
+         self.graphicsView_8.getView().invertY(False)
 
 
 
