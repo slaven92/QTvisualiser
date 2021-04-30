@@ -80,10 +80,11 @@ class MainController():
 
 
 class MainController2():
-    def __init__(self, widget):
+    def __init__(self, widget, default_folder):
         self.widget = widget
         self._create_connections()
         self.data = ImgData()
+        self.default_folder = default_folder
 
     
     def _create_connections(self):
@@ -103,7 +104,7 @@ class MainController2():
 
     #slots
     def loadData(self):
-        filename = QFileDialog.getOpenFileName()
+        filename = QFileDialog.getOpenFileName(caption="Open filename", directory=self.default_folder)
         self.data.loadData(filename[0])
         #rename the choose file dialog
         self.widget.lineEdit_4.setText(filename[0])

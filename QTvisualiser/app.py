@@ -14,6 +14,9 @@ class App(QApplication):
 class App2(QApplication):
     def __init__(self, sys_argv):
         super(App2, self).__init__(sys_argv)
+        
+        filename = sys_argv[1] if len(sys_argv)>1 else None
+        
         self.widget = mainWindow2()
         self.widget.show()
-        self.con = MainController2(self.widget)
+        self.con = MainController2(self.widget, filename)
